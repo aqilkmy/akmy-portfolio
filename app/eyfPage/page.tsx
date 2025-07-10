@@ -12,6 +12,7 @@ import CurvedLoop from "../components/CurvedLoop/CurvedLoop";
 import clsx from "clsx";
 import { routeModule } from "next/dist/build/templates/pages";
 import { div } from "framer-motion/client";
+import Masonry from 'react-masonry-css';
 
 const TiltedCard = dynamic(() => import("../components/TiltedCard/TiltedCard"), {
   ssr: false,
@@ -73,6 +74,12 @@ export default function EyfPage() {
     {
       img: "/img/eyf/eyf-photo-7.webp",
       alt: "Photo - Sal Priadi",
+      height: "524px",
+      width: "400px"
+    },
+    {
+      img: "/img/eyf/eyf-photo-6.webp",
+      alt: "Photo - Sal Priadi",
       height: "250px",
       width: "400px"
     },
@@ -80,12 +87,6 @@ export default function EyfPage() {
       img: "/img/eyf/kaos-eyf-1.webp",
       alt: "StaffEvent Crew Shirt",
       height: "250px",
-      width: "400px"
-    },
-    {
-      img: "/img/eyf/eyf-photo-6.webp",
-      alt: "Photo - Sal Priadi",
-      height: "524px",
       width: "400px"
     },
     {
@@ -119,6 +120,12 @@ export default function EyfPage() {
       width: "400px"
     },
   ]
+
+  const breakpointColumnsObj = {
+    default: 3,
+    1024: 2,
+    640: 1
+  };
 
   return (
     <div ref={containerRef} className="text-neutral-200 overflow-x-hidden">
@@ -197,10 +204,20 @@ export default function EyfPage() {
             </div>
           </div>
 
-          <div className="grid-masonry grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[1fr] mt-16">
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="flex w-full gap-6"
+            columnClassName="space-y-6"
+          >
 
             {item.map((item, index) => (
-                  <div key={index} className="break-inside-avoid items-center justify-center whitespace-nowrap">
+                  <div
+                    key={index}
+                    className="break-inside-avoid items-center justify-center whitespace-nowrap [grid-row-end:span_var(--row-span)]"
+                    style={{
+                      gridRowEnd: `span ${Math.ceil(parseInt(item.height) / 10)}`
+                    }}
+                  >
                     <TiltedCard
                       imageSrc={item.img}
                       altText={item.alt}
@@ -220,7 +237,7 @@ export default function EyfPage() {
                 )
               )
             }
-          </div>
+          </Masonry>
 
         </div>
       </div>

@@ -7,8 +7,12 @@ import ShinyText from "./components/ShinyText/ShinyText";
 import AnimatedContent from "./components/AnimatedContent/AnimatedContent";
 import ScrollReveal from './components/ScrollReveal/ScrollReveal';
 
+
 import Link from 'next/link';
 import clsx from 'clsx';
+import { routeModule } from 'next/dist/build/templates/pages';
+import CurvedLoop from './components/CurvedLoop/CurvedLoop';
+
 
 const TiltedCard = dynamic(() => import('./components/TiltedCard/TiltedCard'), {
   ssr: false,
@@ -50,7 +54,8 @@ export default function Home() {
       desc: "Contribute in graphic design staff on campuss event",
       year: "2024",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/eyfPage"
     },
     {
       img: "/img/bem/Kabinet.png",
@@ -58,7 +63,8 @@ export default function Home() {
       desc: "Make a 4 different logo of organization",
       year: "2025",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/bemLogoPage"
     },
     {
       img: "/img/silverqueen-comp/feed1.webp",
@@ -66,7 +72,8 @@ export default function Home() {
       desc: "Silver Queen Competition",
       year: "2022",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/SQcompPage"
     },
     {
       img: "/img/gimjam-asset/cover.png",
@@ -74,7 +81,8 @@ export default function Home() {
       desc: "SGDC on GimJam ITB 2D Artist",
       year: "2025",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/gimjamPage"
     },
     {
       img: "/img/poster/PosterJDU.webp",
@@ -82,7 +90,8 @@ export default function Home() {
       desc: "Posters",
       year: "All Time",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/postersPage"
     },
     {
       img: "/img/shirt/shirt-2.webp",
@@ -90,7 +99,8 @@ export default function Home() {
       desc: "T-Shirt",
       year: "All Time",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/t-shirtPage"
     },
     {
       img: "/img/other-design/other-1.webp",
@@ -98,7 +108,8 @@ export default function Home() {
       desc: "Other Design",
       year: "All Time",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/otherPage"
     },
     {
       img: "/img/jeans/jeans-1.webp",
@@ -106,7 +117,8 @@ export default function Home() {
       desc: "Savora Jeans",
       year: "2025",
       height: "300px",
-      tag: ["Graphic Design", "Photography"]
+      tag: ["Graphic Design", "Photography"],
+      route:"/savoraPage"
     },
     
   ]
@@ -139,7 +151,7 @@ export default function Home() {
         <header
           className={clsx(
             'fixed top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ease-in-out',
-            scrolled ? 'w-8/12 py-4 shadow-lg' : 'w-11/12 py-4'
+            scrolled ? 'w-8/12 py-4' : 'w-11/12 py-4'
           )}
         >
           <nav className="text-neutral-200 rounded-full relative z-10 bg-white/5 backdrop-blur-xs border border-white/30">
@@ -285,64 +297,66 @@ export default function Home() {
             
             <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mt-16 space-y-6">
               {projects.map((item, index) => (
-                <button
-                  key={index}
-                  onMouseMove={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    setHoverPos({
-                      x: e.clientX - rect.left,
-                      y: e.clientY - rect.top,
-                    });
-                    setHoverIndex(index);
-                  }}
-                  onMouseLeave={() => setHoverIndex(null)}
-                  className="break-inside-avoid items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground block p-0 h-auto hover:bg-transparent w-full"
-                >
-                  <div className="relative rounded-3xl border border-neutral-800 bg-neutral-900 overflow-hidden p-8 group h-full w-full flex flex-col">
+                <Link key={index} href={ item.route }>
+                  <button
+                    key={index}
+                    onMouseMove={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setHoverPos({
+                        x: e.clientX - rect.left,
+                        y: e.clientY - rect.top,
+                      });
+                      setHoverIndex(index);
+                    }}
+                    onMouseLeave={() => setHoverIndex(null)}
+                    className="break-inside-avoid items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground block p-0 h-auto hover:bg-transparent w-full"
+                  >
+                    <div className="relative rounded-3xl border border-neutral-800 bg-neutral-900 overflow-hidden p-8 group h-full w-full flex flex-col">
 
-                    <div
-                      className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
-                      style={{
-                        opacity: hoverIndex === index ? 1 : 0,
-                        background: `radial-gradient(circle at ${hoverPos.x}px ${hoverPos.y}px, rgba(56, 189, 248, 0.10), transparent 80%)`,
-                      }}
-                    />
-                    <div className="relative overflow-hidden rounded-xl mb-4 bg-gradient-to-br from-background/50 to-background/80 shadow-lg hover:border-primary/20 hover:border-1 transition-all duration-300">
-                      <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-                      <div className="overflow-hidden object-cover w-full h-full transition-transform duration-300" style={{ height: `${item.height || 300}px` }}>
-                        <img
-                          src={item.img}
-                          alt={item.title}
-                          width="800"
-                          height={item.height || 300}
-                          loading="eager"
-                          className="w-full h-full object-cover transition-transform duration-300"
-                        />
+                      <div 
+                        className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
+                        style={{
+                          opacity: hoverIndex === index ? 1 : 0,
+                          background: `radial-gradient(circle at ${hoverPos.x}px ${hoverPos.y}px, rgba(56, 189, 248, 0.10), transparent 80%)`,
+                        }}
+                      />
+                      <div className="relative overflow-hidden rounded-xl mb-4 bg-gradient-to-br from-background/50 to-background/80 shadow-lg border border-transparent group transition-all duration-300 hover:border-white/30">
+                        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                        <div className="overflow-hidden object-cover w-full h-full transition-transform duration-300" style={{ height: `${item.height || 300}px` }}>
+                          <img
+                            src={item.img}
+                            alt={item.title}
+                            width="800"
+                            height={item.height || 300}
+                            loading="eager"
+                            className="w-full h-full object-cover transition-transform duration-300"
+                          />
+                        </div>
+                      </div>
+                      <div className="px-4 text-left flex flex-col h-full">
+                        <h3 className="text-xl font-black mb-2 flex items-center gap-2 group-hover:text-primary transition-colors text-wrap">
+                          {item.title}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <path d="M15 3h6v6"></path>
+                            <path d="M10 14L21 3"></path>
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          </svg>
+                        </h3>
+                        <p className="text-muted-foreground mb-4 text-sm md:text-base text-left text-wrap font-extralight text-neutral-300">{item.desc}</p>
+                        <div className="flex gap-2 flex-wrap mt-auto">
+                          {item.tag.map((tag, i) => (
+                            <span
+                              key={i}
+                              className="mb-2 bg-secondary px-3 py-1 bg-neutral-800 rounded-full text-xs hover:bg-neutral-700 hover:text-primary-foreground transition-colors duration-300"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="px-4 text-left flex flex-col h-full">
-                      <h3 className="text-xl font-black mb-2 flex items-center gap-2 group-hover:text-primary transition-colors text-wrap">
-                        {item.title}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <path d="M15 3h6v6"></path>
-                          <path d="M10 14L21 3"></path>
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        </svg>
-                      </h3>
-                      <p className="text-muted-foreground mb-4 text-sm md:text-base text-left text-wrap font-extralight text-neutral-300">{item.desc}</p>
-                      <div className="flex gap-2 flex-wrap mt-auto">
-                        {item.tag.map((tag, i) => (
-                          <span
-                            key={i}
-                            className="mb-2 bg-secondary px-3 py-1 bg-neutral-800 rounded-full text-xs hover:bg-neutral-700 hover:text-primary-foreground transition-colors duration-300"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </button>
+                  </button>
+                </Link>
               ))}
             </div>
           
