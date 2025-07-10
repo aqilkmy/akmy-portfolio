@@ -13,6 +13,15 @@ import clsx from 'clsx';
 import { routeModule } from 'next/dist/build/templates/pages';
 import CurvedLoop from './components/CurvedLoop/CurvedLoop';
 import ScrollFadeIn from './components/ScrollFadeIn';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "./components/ui/breadcrumb"
+
 
 
 const TiltedCard = dynamic(() => import('./components/TiltedCard/TiltedCard'), {
@@ -244,7 +253,7 @@ export default function Home() {
             <div className="relative w-[300px] h-[300px]">
               <div className="w-[301px] h-[301px] rounded-full absolute bottom-0 left-0 z-0 bg-white/5 backdrop-blur-xs border border-white/20"></div>
               <div className="w-[300px] h-auto absolute bottom-0 left-0 z-10">
-                <ScrollFadeIn>
+                <ScrollFadeIn delay={700}>
                   <img src="/img/foto-1.webp" alt="foto" className="w-full h-auto object-cover" />
                 </ScrollFadeIn>
               </div>
@@ -277,13 +286,13 @@ export default function Home() {
           </div>
         </section>
 
-        <div className='overflow-x-visible'>
+        {/* <div className='overflow-x-visible'>
           <Crosshair 
           containerRef={containerRef} 
           color="#616364" 
           visible={true} 
           />
-        </div>                  
+        </div>                   */}
 
       </div>
     </div>

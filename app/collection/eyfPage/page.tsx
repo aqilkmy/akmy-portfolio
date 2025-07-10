@@ -3,27 +3,36 @@
 import { useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import BlurText from "../components/BlurText/BlurText";
-import ShinyText from "../components/ShinyText/ShinyText";
-import AnimatedContent from "../components/AnimatedContent/AnimatedContent";
-import ScrollReveal from "../components/ScrollReveal/ScrollReveal";
-import CurvedLoop from "../components/CurvedLoop/CurvedLoop";
+import BlurText from "../../components/BlurText/BlurText";
+import ShinyText from "../../components/ShinyText/ShinyText";
+import AnimatedContent from "../../components/AnimatedContent/AnimatedContent";
+import ScrollReveal from "../../components/ScrollReveal/ScrollReveal";
+import CurvedLoop from "../../components/CurvedLoop/CurvedLoop";
 
 import clsx from "clsx";
 import { routeModule } from "next/dist/build/templates/pages";
 import { div } from "framer-motion/client";
 import Masonry from 'react-masonry-css';
 
-const TiltedCard = dynamic(() => import("../components/TiltedCard/TiltedCard"), {
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "../../components/ui/breadcrumb"
+
+const TiltedCard = dynamic(() => import("../../components/TiltedCard/TiltedCard"), {
   ssr: false,
   loading: () => (
     <div className="w-[300px] h-[300px] bg-gray-800 animate-pulse rounded-xl" />
   ),
 });
 
-const Aurora = dynamic(() => import("../components/Aurora/Aurora"), { ssr: false });
-const Squares = dynamic(() => import("../components/Squares/Squares"), { ssr: false });
-const Crosshair = dynamic(() => import("../components/Crosshair/Crosshair"), {
+const Aurora = dynamic(() => import("../../components/Aurora/Aurora"), { ssr: false });
+const Squares = dynamic(() => import("../../components/Squares/Squares"), { ssr: false });
+const Crosshair = dynamic(() => import("../../components/Crosshair/Crosshair"), {
   ssr: false,
   loading: () => null,
 });
@@ -166,11 +175,29 @@ export default function EyfPage() {
               {/* Back Button */}
               <div>
                 <Link
-                  href="/"
+                  href="/collection"
                   className=" relative inline-block text-neutral-200 rounded-full z-10 bg-white/5 backdrop-blur-xs border border-white/30 px-4 py-1 my-4 hover:bg-white/40 hover:drop-shadow-[0_0_40px_#38bdf8] transition-colors duration-300"
                 >
                   Back
                 </Link>
+              </div>
+
+              <div className="my-6">
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/collection">Collection</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbPage>Eyf</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbList>
+                </Breadcrumb>
               </div>
 
               {/* Text Content */}

@@ -14,6 +14,15 @@ import { routeModule } from 'next/dist/build/templates/pages';
 import CurvedLoop from '../components/CurvedLoop/CurvedLoop';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "../components/ui/breadcrumb"
+
 
 const TiltedCard = dynamic(() => import('../components/TiltedCard/TiltedCard'), {
   ssr: false,
@@ -56,7 +65,7 @@ export default function Home() {
       year: "2024",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/eyfPage"
+      route:"/collection/eyfPage"
     },
     {
       img: "/img/bem/Kabinet.png",
@@ -65,7 +74,7 @@ export default function Home() {
       year: "2025",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/bemLogoPage"
+      route:"/collection/bemLogoPage"
     },
     {
       img: "/img/silverqueen-comp/feed1.webp",
@@ -74,7 +83,7 @@ export default function Home() {
       year: "2022",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/SQcompPage"
+      route:"/collection/SQcompPage"
     },
     {
       img: "/img/gimjam-asset/cover.png",
@@ -83,7 +92,7 @@ export default function Home() {
       year: "2025",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/gimjamPage"
+      route:"/collection/gimjamPage"
     },
     {
       img: "/img/poster/PosterJDU.webp",
@@ -92,7 +101,7 @@ export default function Home() {
       year: "All Time",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/postersPage"
+      route:"/collection/postersPage"
     },
     {
       img: "/img/shirt/shirt-2.webp",
@@ -101,7 +110,7 @@ export default function Home() {
       year: "All Time",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/t-shirtPage"
+      route:"/collection/t-shirtPage"
     },
     {
       img: "/img/other-design/other-1.webp",
@@ -110,7 +119,7 @@ export default function Home() {
       year: "All Time",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/otherPage"
+      route:"/collection/otherPage"
     },
     {
       img: "/img/jeans/jeans-1.webp",
@@ -119,7 +128,7 @@ export default function Home() {
       year: "2025",
       height: "300px",
       tag: ["Graphic Design", "Photography"],
-      route:"/savoraPage"
+      route:"/collection/savoraPage"
     },
     
   ]
@@ -150,8 +159,8 @@ export default function Home() {
         </div>
 
         <section id='porto' className='scroll-m-24 relative z-10 my-10'>
-          <div className='max-w-6xl mx-auto grid overflow-y-visible  '>
-              <div>
+          <div className='max-w-7xl mx-auto'>
+              <div className='mb-4'>
                 <Link
                   href="/"
                   className=" relative inline-block text-neutral-200 rounded-full z-10 bg-white/5 backdrop-blur-xs border border-white/30 px-4 py-1 my-4 hover:bg-white/40 hover:drop-shadow-[0_0_40px_#38bdf8] transition-colors duration-300"
@@ -159,6 +168,24 @@ export default function Home() {
                   Back
                 </Link>
               </div>
+
+              <div className='my-6'>
+                <Breadcrumb>
+                  <BreadcrumbList>
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                      <BreadcrumbLink href="/collection">Collection</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                  </BreadcrumbList>
+                </Breadcrumb>
+              </div>
+          </div>          
+          <div className='max-w-6xl mx-auto grid overflow-y-visible  '>
+
             <div className='flex w-2/5 justify-between'>
               <div>
                 <BlurText
@@ -268,13 +295,13 @@ export default function Home() {
           </div>
         </section> 
 
-        <div className='overflow-x-visible'>
+        {/* <div className='overflow-x-visible'>
           <Crosshair 
           containerRef={containerRef} 
           color="#616364" 
           visible={true} 
           />
-        </div>                  
+        </div>                   */}
 
       </div>
     </div>
