@@ -48,8 +48,7 @@
   }
 }
 
-/* Class khusus untuk grid masonry */
-.grid-masonry {
-  display: grid;
-  grid-auto-flow: dense;
+html, body {
+  overflow-x: hidden;
 }
+

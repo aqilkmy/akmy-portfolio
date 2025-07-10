@@ -12,6 +12,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { routeModule } from 'next/dist/build/templates/pages';
 import CurvedLoop from './components/CurvedLoop/CurvedLoop';
+import ScrollFadeIn from './components/ScrollFadeIn';
 
 
 const TiltedCard = dynamic(() => import('./components/TiltedCard/TiltedCard'), {
@@ -125,11 +126,11 @@ export default function Home() {
 
 
   return (
-    <div ref={containerRef} className="text-neutral-200 overflow-x-hidden">
+    <div ref={containerRef} className="text-neutral-200 max-w-screen overflow-x-hidden">
       
 
       <div id='home' className="relative min-h-screen overflow-x-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <Aurora 
           colorStops={["#8CC6DD", "#384252", "#8CC6DD"]} 
           blend={1} 
@@ -138,7 +139,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <Squares 
           speed={0.5} 
           squareSize={30} 
@@ -156,17 +157,30 @@ export default function Home() {
         >
           <nav className="text-neutral-200 rounded-full relative z-10 bg-white/5 backdrop-blur-xs border border-white/30">
             <div className={clsx(
-              'mx-auto flex justify-between items-center transition-all duration-300 px-6',
-              scrolled ? 'max-w-6xl py-4' : 'max-w-7xl py-4'
+              'mx-auto flex items-center transition-all duration-300 px-6',
+              scrolled ? 'max-w-6xl py-4 justify-center' : '  justify-between max-w-7xl py-4'
             )}>
-              <div className="text-xl font-bold transition-all">
+
+
+              <div className={clsx(
+                "text-xl font-bold transition-all duration-500 ease-in-out origin-left",
+                scrolled
+                  ? "opacity-0 scale-95 absolute -left-10 pointer-events-none"
+                  : "opacity-100 scale-100 static"
+              )}>
                 <span className="text-neutral-200">Aqil</span>
                 <span className="text-slate-400">Kmy</span>
               </div>
-              <ul className="flex gap-10 font-semibold text-sm text-neutral-300">
+
+              <ul className={clsx('flex font-semibold text-sm text-neutral-300 transition-all duration-500 ease-in-out',
+                scrolled ? 'gap-6' : 'gap-10')
+              }>
                 <li><Link href="#home" className="hover:text-white transition">Home</Link></li>
                 <li><Link href="#about" className="hover:text-white transition">About</Link></li>
+                <li><Link href="#skills" className="hover:text-white transition">Skills</Link></li>
                 <li><Link href="#porto" className="hover:text-white transition">Collection</Link></li>
+                <li><Link href="#githubstat" className="hover:text-white transition">Github Stats</Link></li>
+                <li><Link href="#certif" className="hover:text-white transition">Certificate</Link></li>
                 <li><Link href="#contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>
@@ -255,8 +269,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section id='porto' className='scroll-m-16 relative z-10'>     
-          <div className=' my-40 max-w-6xl mx-auto grid overflow-y-visible  '>
+        <section id='skills' className='scroll-m-24 relative z-10 my-24'>
+          <div >
+              
+          </div>
+        </section>
+
+
+        <section id='porto' className='scroll-m-24 relative z-10 my-24'>     
+          <div className='max-w-6xl mx-auto grid overflow-y-visible  '>
             <div className='flex w-2/5 justify-between'>
               <div>
                 <BlurText
@@ -295,68 +316,70 @@ export default function Home() {
             </div>
             
             
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mt-16 space-y-6">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mt-16">
               {projects.map((item, index) => (
-                <Link key={index} href={ item.route }>
-                  <button
-                    key={index}
-                    onMouseMove={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setHoverPos({
-                        x: e.clientX - rect.left,
-                        y: e.clientY - rect.top,
-                      });
-                      setHoverIndex(index);
-                    }}
-                    onMouseLeave={() => setHoverIndex(null)}
-                    className="break-inside-avoid items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground block p-0 h-auto hover:bg-transparent w-full"
-                  >
-                    <div className="relative rounded-3xl border border-neutral-800 bg-neutral-900 overflow-hidden p-8 group h-full w-full flex flex-col">
-
-                      <div 
-                        className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
-                        style={{
-                          opacity: hoverIndex === index ? 1 : 0,
-                          background: `radial-gradient(circle at ${hoverPos.x}px ${hoverPos.y}px, rgba(56, 189, 248, 0.10), transparent 80%)`,
+                <ScrollFadeIn key={index} delay={index *100}>
+                    <Link key={index} href={ item.route }>
+                      <button
+                        key={index}
+                        onMouseMove={(e) => {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          setHoverPos({
+                            x: e.clientX - rect.left,
+                            y: e.clientY - rect.top,
+                          });
+                          setHoverIndex(index);
                         }}
-                      />
-                      <div className="relative overflow-hidden rounded-xl mb-4 bg-gradient-to-br from-background/50 to-background/80 shadow-lg border border-transparent group transition-all duration-300 hover:border-white/30">
-                        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                        <div className="overflow-hidden object-cover w-full h-full transition-transform duration-300" style={{ height: `${item.height || 300}px` }}>
-                          <img
-                            src={item.img}
-                            alt={item.title}
-                            width="800"
-                            height={item.height || 300}
-                            loading="eager"
-                            className="w-full h-full object-cover transition-transform duration-300"
+                        onMouseLeave={() => setHoverIndex(null)}
+                        className="mb-6 drop-shadow-[0_0_80px_#21343D] break-inside-avoid items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground block p-0 h-auto hover:bg-transparent w-full"
+                      >
+                        <div className="relative rounded-3xl border border-neutral-800 bg-neutral-900 overflow-hidden p-8 group h-full w-full flex flex-col">
+
+                          <div 
+                            className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
+                            style={{
+                              opacity: hoverIndex === index ? 1 : 0,
+                              background: `radial-gradient(circle at ${hoverPos.x}px ${hoverPos.y}px, rgba(56, 189, 248, 0.10), transparent 80%)`,
+                            }}
                           />
+                          <div className="relative overflow-hidden rounded-xl mb-4 bg-gradient-to-br from-background/50 to-background/80 shadow-lg border border-transparent group transition-all duration-300 hover:border-white/30">
+                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                            <div className="overflow-hidden object-cover w-full h-full transition-transform duration-300" style={{ height: `${item.height || 300}px` }}>
+                              <img
+                                src={item.img}
+                                alt={item.title}
+                                width="800"
+                                height={item.height || 300}
+                                loading="eager"
+                                className="w-full h-full object-cover transition-transform duration-300"
+                              />
+                            </div>
+                          </div>
+                          <div className="px-4 text-left flex flex-col h-full">
+                            <h3 className="text-xl font-black mb-2 flex items-center gap-2 group-hover:text-primary transition-colors text-wrap">
+                              {item.title}
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <path d="M15 3h6v6"></path>
+                                <path d="M10 14L21 3"></path>
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                              </svg>
+                            </h3>
+                            <p className="text-muted-foreground mb-4 text-sm md:text-base text-left text-wrap font-extralight text-neutral-300">{item.desc}</p>
+                            <div className="flex gap-2 flex-wrap mt-auto">
+                              {item.tag.map((tag, i) => (
+                                <span
+                                  key={i}
+                                  className="mb-2 bg-secondary px-3 py-1 bg-neutral-800 rounded-full text-xs hover:bg-neutral-700 hover:text-primary-foreground transition-colors duration-300"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div className="px-4 text-left flex flex-col h-full">
-                        <h3 className="text-xl font-black mb-2 flex items-center gap-2 group-hover:text-primary transition-colors text-wrap">
-                          {item.title}
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <path d="M15 3h6v6"></path>
-                            <path d="M10 14L21 3"></path>
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                          </svg>
-                        </h3>
-                        <p className="text-muted-foreground mb-4 text-sm md:text-base text-left text-wrap font-extralight text-neutral-300">{item.desc}</p>
-                        <div className="flex gap-2 flex-wrap mt-auto">
-                          {item.tag.map((tag, i) => (
-                            <span
-                              key={i}
-                              className="mb-2 bg-secondary px-3 py-1 bg-neutral-800 rounded-full text-xs hover:bg-neutral-700 hover:text-primary-foreground transition-colors duration-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                </Link>
+                      </button>
+                    </Link>
+                </ScrollFadeIn>
               ))}
             </div>
           

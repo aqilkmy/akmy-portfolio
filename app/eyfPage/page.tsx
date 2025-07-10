@@ -85,37 +85,37 @@ export default function EyfPage() {
     },
     {
       img: "/img/eyf/kaos-eyf-1.webp",
-      alt: "StaffEvent Crew Shirt",
+      alt: "Staff Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-2.webp",
-      alt: "StaffEvent Crew Shirt",
+      alt: "Staff Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-3.webp",
-      alt: "StaffEvent Crew Shirt",
+      alt: "Staff Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-4.webp",
-      alt: "StaffEvent Crew Shirt",
+      alt: "Staff Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-5.webp",
-      alt: "StaffEvent Crew Shirt",
+      alt: "Final Staff Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-6.webp",
-      alt: "StaffEvent Crew Shirt",
+      alt: "Staff Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
@@ -166,7 +166,7 @@ export default function EyfPage() {
               {/* Back Button */}
               <div>
                 <Link
-                  href="/"
+                  href="/#porto"
                   className=" relative inline-block text-neutral-200 rounded-full z-10 bg-white/5 backdrop-blur-xs border border-white/30 px-4 py-1 my-4 hover:bg-white/40 hover:drop-shadow-[0_0_40px_#38bdf8] transition-colors duration-300"
                 >
                   Back
@@ -191,7 +191,7 @@ export default function EyfPage() {
                   enableBlur={true}
                   baseRotation={5}
                   blurStrength={10}
-                  textClassName="text-justify font-light"
+                  textClassName="text-justify font-light my-6"
                 >
                   Contributed as a graphic designer and event photographer for the Engineering Youth
                   Festival, an event showcasing creativity and innovation among engineering students.
