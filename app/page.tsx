@@ -22,6 +22,8 @@ import {
   BreadcrumbSeparator,
 } from "./components/ui/breadcrumb"
 import SkillBar from './components/SkillBar';
+import GitHubStats from './components/GithubStats';
+import CircularGallery from './components/CircularGallery/CircularGallery';
 
 
 
@@ -57,84 +59,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  
-  const projects = [
-    {
-      img: "/img/eyf/eyf-photo-1.webp",
-      title: "Engineering Youth Festival",
-      desc: "Contribute in graphic design staff on campuss event",
-      year: "2024",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/eyfPage"
-    },
-    {
-      img: "/img/bem/Kabinet.png",
-      title: "BEM Unsoed 2025's Logo",
-      desc: "Make a 4 different logo of organization",
-      year: "2025",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/bemLogoPage"
-    },
-    {
-      img: "/img/silverqueen-comp/feed1.webp",
-      title: "Silver Queen Competition",
-      desc: "Silver Queen Competition",
-      year: "2022",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/SQcompPage"
-    },
-    {
-      img: "/img/gimjam-asset/cover.png",
-      title: "SGDC on GimJam ITB 2D Artist",
-      desc: "SGDC on GimJam ITB 2D Artist",
-      year: "2025",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/gimjamPage"
-    },
-    {
-      img: "/img/poster/PosterJDU.webp",
-      title: "Posters",
-      desc: "Posters",
-      year: "All Time",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/postersPage"
-    },
-    {
-      img: "/img/shirt/shirt-2.webp",
-      title: "T-Shirt",
-      desc: "T-Shirt",
-      year: "All Time",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/t-shirtPage"
-    },
-    {
-      img: "/img/other-design/other-1.webp",
-      title: "Other Design",
-      desc: "Other Design",
-      year: "All Time",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/otherPage"
-    },
-    {
-      img: "/img/jeans/jeans-1.webp",
-      title: "Savora Jeans",
-      desc: "Savora Jeans",
-      year: "2025",
-      height: "300px",
-      tag: ["Graphic Design", "Photography"],
-      route:"/savoraPage"
-    },
-    
-  ]
-
-
   return (
     <div ref={containerRef} className="text-neutral-200 max-w-screen overflow-x-hidden">
       
@@ -187,10 +111,9 @@ export default function Home() {
               }>
                 <li><Link href="#home" className="hover:text-white transition">Home</Link></li>
                 <li><Link href="#about" className="hover:text-white transition">About</Link></li>
-                <li><Link href="#skills" className="hover:text-white transition">Skills</Link></li>
                 <li><Link href="#githubstat" className="hover:text-white transition">Github Stats</Link></li>
-                <li><Link href="#certif" className="hover:text-white transition">Certificate</Link></li>
-                <li><Link href="/collection" className="hover:text-white transition">Collection</Link></li>
+                {/* <li><Link href="#certif" className="hover:text-white transition">Certificate</Link></li> */}
+                <li><Link href="#collection" className="hover:text-white transition">Collection</Link></li>
                 <li><Link href="#contact" className="hover:text-white transition">Contact</Link></li>
               </ul>
             </div>
@@ -231,7 +154,7 @@ export default function Home() {
                 threshold={0.2}
                 delay={0.3}
               >
-                <div className="bg-slate-400 w-1/3 h-[3px] rounded-full my-2"></div>
+              <div className="bg-slate-400 w-1/3 h-[3px] rounded-full my-2"></div>
               </AnimatedContent>
               <AnimatedContent
                 distance={150}
@@ -252,7 +175,7 @@ export default function Home() {
             </div>
             
             <div className="relative w-[300px] h-[300px]">
-              <div className="w-[301px] h-[301px] rounded-full absolute bottom-0 left-0 z-0 bg-white/5 backdrop-blur-xs border border-white/20"></div>
+              <div className={`w-[301px] h-[301px] rounded-full absolute bottom-0 left-0 z-0 bg-white/5 backdrop-blur-xs border border-white/20 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
               <div className="w-[300px] h-auto absolute bottom-0 left-0 z-10">
                 <ScrollFadeIn delay={700}>
                   <img src="/img/foto-1.webp" alt="foto" className="w-full h-auto object-cover" />
@@ -262,43 +185,68 @@ export default function Home() {
           </div>
         </div>
         
-        <section id='about' className='scroll-m-24 relative z-10'>
-          <div className="mt-40 ">
+        <ScrollFadeIn delay={700}>
+          <section id='about' className='scroll-m-24 relative z-10'>
+            <div className="mt-40 ">
+              <div className={`font-semibold text-xl text-center drop-shadow-[0_0_40px_#38bdf8] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+                About Me
+              </div>
+
+              <div className={`text-center bg-slate-400 w-5 h-[3px] rounded-full my-2 mx-auto transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
+
+              <div className="mt-20 mx-auto max-w-100vdh ">
+                <div className='mx-20 flex gap-4'>
+                  <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
+                    <div className='text-xl font-semibold text-neutral-200 mb-6'>
+                      Introduce
+                    </div>
+                    <div>
+                      I’m Muhammad Aqil Karomy, a passionate graphic designer with over 4 years of experience in the creative industry. I specialize in 2D design for both digital and print media, including posters, social media content, apparel graphics, and branding materials. My journey began in high school through organizational work and has grown into a deep commitment to delivering clear, impactful, and meaningful visuals. <br /> <br />
+                      Currently, I’m also pursuing a degree in Informatics at Jenderal Soedirman University, where I continue to sharpen both my creative and technical skills. I enjoy turning ideas into visual stories and helping individuals, brands, and communities communicate their identity through design.
+                    </div>
+                  </div>
+                  <div className='w-2/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
+                    <h2 className="text-xl font-semibold text-neutral-200 mb-6">Skills</h2>
+                    <SkillBar label="Adobe Photoshop" percent={80} />
+                    <SkillBar label="Adobe Illustrator" percent={70} />
+                    <SkillBar label="Figma" percent={45} />
+                    <SkillBar label="Canva" percent={70} />
+                    <SkillBar label="HTML CSS & Tailwind" percent={60} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollFadeIn>  
+
+
+        <ScrollFadeIn delay={700}>
+          <section id='githubstat' className='scroll-m-24 relative z-10 my-24'>
+            <div >
+                <GitHubStats />
+            </div>
+          </section>
+        </ScrollFadeIn>     
+
+        <ScrollFadeIn delay={700}>
+          <section id='collection' className='scroll-m-24 relative z-10 my-24'>
             <div className={`font-semibold text-xl text-center drop-shadow-[0_0_40px_#38bdf8] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              About Me
+              Collection
             </div>
 
             <div className={`text-center bg-slate-400 w-5 h-[3px] rounded-full my-2 mx-auto transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
 
-            <div className="mt-20 mx-auto max-w-100vdh ">
-              <div className='mx-20 flex gap-4'>
-                <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
-                  <div className='text-xl font-semibold text-neutral-200 mb-6'>
-                    Introduce
-                  </div>
-                  <div>
-                    I’m Muhammad Aqil Karomy, a passionate graphic designer with over 4 years of experience in the creative industry. I specialize in 2D design for both digital and print media, including posters, social media content, apparel graphics, and branding materials. My journey began in high school through organizational work and has grown into a deep commitment to delivering clear, impactful, and meaningful visuals. <br /> <br />
-                    Currently, I’m also pursuing a degree in Informatics at Jenderal Soedirman University, where I continue to sharpen both my creative and technical skills. I enjoy turning ideas into visual stories and helping individuals, brands, and communities communicate their identity through design.
-                  </div>
-                </div>
-                <div className='w-2/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
-                  <h2 className="text-xl font-semibold text-neutral-200 mb-6">Skills</h2>
-                  <SkillBar label="Adobe Photoshop" percent={80} />
-                  <SkillBar label="Adobe Illustrator" percent={70} />
-                  <SkillBar label="Figma" percent={45} />
-                  <SkillBar label="Canva" percent={70} />
-                  <SkillBar label="HTML CSS & Tailwind" percent={60} />
-                </div>
-              </div>
+            <div className='' style={{ height: '600px', position: 'relative' }}>
+              <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02}/>
             </div>
-          </div>
-        </section>
-
-        <section id='skills' className='scroll-m-24 relative z-10 my-24'>
-          <div >
-              
-          </div>
-        </section>
+            
+            <div className='flex justify-center'>
+              <Link href={"/collection"} className='text-center text-neutral-200 rounded-full z-10 bg-white/5 backdrop-blur-xs border border-white/30 px-6 py-1 my-4 hover:bg-white/40 hover:drop-shadow-[0_0_40px_#38bdf8] transition-colors duration-300'>
+                Go to Collection Page
+              </Link>
+            </div>
+          </section>
+        </ScrollFadeIn>
 
         <div className='overflow-x-visible'>
           <Crosshair 
@@ -308,7 +256,7 @@ export default function Home() {
           />
         </div>                  
 
-        <div className="relative z-10 text-xs m-5">
+        <div className="text-center relative z-10 text-xs m-5 font-light">
             © 2025 Designed By AqilKmy
         </div>
       </div>
