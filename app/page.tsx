@@ -24,6 +24,7 @@ import {
 import SkillBar from './components/SkillBar';
 import GitHubStats from './components/GithubStats';
 import CircularGallery from './components/CircularGallery/CircularGallery';
+import { handleScrollTo } from "./components/Lenis";
 
 
 
@@ -60,7 +61,11 @@ export default function Home() {
   }, []);
   
   return (
-    <div ref={containerRef} className="text-neutral-200 max-w-screen overflow-x-hidden">
+    <div ref={containerRef} className="text-neutral-200 max-w-screen overflow-x-hidden"
+    style={{
+      scrollBehavior: 'smooth',
+    }}
+    >
       
 
       <div id='home' className="relative min-h-screen overflow-x-hidden">
@@ -109,12 +114,39 @@ export default function Home() {
               <ul className={clsx('flex font-semibold text-sm text-neutral-300 transition-all duration-500 ease-in-out',
                 scrolled ? 'gap-6' : 'gap-10')
               }>
-                <li><Link href="#home" className="hover:text-white transition">Home</Link></li>
-                <li><Link href="#about" className="hover:text-white transition">About</Link></li>
-                <li><Link href="#githubstat" className="hover:text-white transition">Github Stats</Link></li>
-                {/* <li><Link href="#certif" className="hover:text-white transition">Certificate</Link></li> */}
-                <li><Link href="#collection" className="hover:text-white transition">Collection</Link></li>
-                <li><Link href="#contact" className="hover:text-white transition">Contact</Link></li>
+                <li>
+                  <button onClick={() => handleScrollTo("#home")} className="hover:text-white transition">
+                    Home
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleScrollTo("#about")} className="hover:text-white transition">
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleScrollTo("#githubstat")} className="hover:text-white transition">
+                    Github Stats
+                  </button>
+                </li>
+                {/* 
+                <li>
+                  <button onClick={() => handleScrollTo("#certif")} className="hover:text-white transition">
+                    Certificate
+                  </button>
+                </li> 
+                */}
+                <li>
+                  <button onClick={() => handleScrollTo("#collection")} className="hover:text-white transition">
+                    Collection
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleScrollTo("#contact")} className="hover:text-white transition">
+                    Contact
+                  </button>
+                </li>
+
               </ul>
             </div>
           </nav>
@@ -248,13 +280,13 @@ export default function Home() {
           </section>
         </ScrollFadeIn>
 
-        <div className='overflow-x-visible'>
+        {/* <div className='overflow-x-visible'>
           <Crosshair 
           containerRef={containerRef} 
           color="#616364" 
           visible={true} 
           />
-        </div>                  
+        </div>                   */}
 
         <div className="text-center relative z-10 text-xs m-5 font-light">
             © 2025 Designed By AqilKmy
