@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #e5e5e5;
-  --foreground: #171717;
+  --background: #1D2127;
+  --foreground: #e5e5e5;
   --font-sans: 'Poppins', sans-serif;
   --font-mono: monospace;
   /* tambahkan vars lainnya jika perlu */
@@ -50,7 +50,4 @@
 
 html, body {
   overflow-x: hidden;
-}
-body {
-  scroll-behavior: smooth;
 }
