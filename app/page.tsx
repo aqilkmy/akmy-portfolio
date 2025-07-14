@@ -89,7 +89,7 @@ export default function Home() {
             scrolled ? 'w-8/12 py-4' : 'w-11/12 py-4'
           )}
         >
-          <nav className="text-neutral-200 rounded-full relative z-10 bg-white/5 backdrop-blur-xs border border-white/30">
+          <nav className="text-neutral-200 rounded-full relative z-10 bg-white/5 backdrop-blur-xs border border-white/30 hover:drop-shadow-[0_0_40px_#38bdf8] transition-all duration-500">
             <div className={clsx(
               'mx-auto flex items-center transition-all duration-300 px-6',
               scrolled ? 'max-w-6xl py-4 justify-center' : '  justify-between max-w-7xl py-4'
@@ -176,7 +176,7 @@ export default function Home() {
             
             <div className="relative w-[300px] h-[300px]">
               <div className={`w-[301px] h-[301px] rounded-full absolute bottom-0 left-0 z-0 bg-white/5 backdrop-blur-xs border border-white/20 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
-              <div className="w-[300px] h-auto absolute bottom-0 left-0 z-10">
+              <div className="w-[300px] h-auto absolute bottom-0 left-0 z-10 hover:drop-shadow-[0_0_40px_#194D65] transition-all duration-500">
                 <ScrollFadeIn delay={700}>
                   <img src="/img/foto-1.webp" alt="foto" className="w-full h-auto object-cover" />
                 </ScrollFadeIn>
@@ -196,7 +196,7 @@ export default function Home() {
 
               <div className="mt-20 mx-auto max-w-100vdh ">
                 <div className='mx-20 flex gap-4'>
-                  <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
+                  <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4 hover:drop-shadow-[0_0_40px_#38bdf8] transition-all duration-500'>
                     <div className='text-xl font-semibold text-neutral-200 mb-6'>
                       Introduce
                     </div>
@@ -205,7 +205,7 @@ export default function Home() {
                       Currently, I’m also pursuing a degree in Informatics at Jenderal Soedirman University, where I continue to sharpen both my creative and technical skills. I enjoy turning ideas into visual stories and helping individuals, brands, and communities communicate their identity through design.
                     </div>
                   </div>
-                  <div className='w-2/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
+                  <div className='w-2/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4 hover:drop-shadow-[0_0_40px_#38bdf8] transition-all duration-500'>
                     <h2 className="text-xl font-semibold text-neutral-200 mb-6">Skills</h2>
                     <SkillBar label="Adobe Photoshop" percent={80} />
                     <SkillBar label="Adobe Illustrator" percent={70} />
@@ -222,7 +222,7 @@ export default function Home() {
 
         <ScrollFadeIn delay={700}>
           <section id='githubstat' className='scroll-m-24 relative z-10 my-24'>
-            <div >
+            <div className=''>
                 <GitHubStats />
             </div>
           </section>
