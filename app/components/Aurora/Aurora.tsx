@@ -145,14 +145,15 @@ export default function Aurora(props: AuroraProps) {
 
       const gl = renderer.gl;
 
-      // ✅ Cek apakah canvas bertipe HTMLCanvasElement
+     
       if (gl.canvas instanceof HTMLCanvasElement) {
         gl.canvas.style.backgroundColor = "transparent";
       }
 
-      gl.clearColor(0, 0, 0, 0);
+      gl.clearColor(0.0, 0.0, 0.0, 0.0);
       gl.enable(gl.BLEND);
-      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
 
       const geometry = new Triangle(gl);
       if (geometry.attributes.uv) {

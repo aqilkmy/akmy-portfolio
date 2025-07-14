@@ -69,7 +69,7 @@ export default function Home() {
       
 
       <div id='home' className="relative min-h-screen overflow-x-hidden">
-        <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden bg-transparent">
           <Aurora 
           colorStops={["#60BADE", "#293A55", "#60BADE"]} 
           blend={1} 

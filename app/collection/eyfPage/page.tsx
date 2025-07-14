@@ -4,7 +4,6 @@ import { useRef, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import BlurText from "../../components/BlurText/BlurText";
-import ShinyText from "../../components/ShinyText/ShinyText";
 import AnimatedContent from "../../components/AnimatedContent/AnimatedContent";
 import ScrollReveal from "../../components/ScrollReveal/ScrollReveal";
 import CurvedLoop from "../../components/CurvedLoop/CurvedLoop";
