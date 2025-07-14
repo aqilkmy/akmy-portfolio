@@ -21,6 +21,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../../components/ui/breadcrumb"
+import ScrollFadeIn from "@/app/components/ScrollFadeIn";
 
 const TiltedCard = dynamic(() => import("../../components/TiltedCard/TiltedCard"), {
   ssr: false,
@@ -93,37 +94,37 @@ export default function EyfPage() {
     },
     {
       img: "/img/eyf/kaos-eyf-1.webp",
-      alt: "Staff Event Crew Shirt",
+      alt: "Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-2.webp",
-      alt: "Staff Event Crew Shirt",
+      alt: "Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-3.webp",
-      alt: "Staff Event Crew Shirt",
+      alt: "Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-4.webp",
-      alt: "Staff Event Crew Shirt",
+      alt: "Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-5.webp",
-      alt: "Final Staff Event Crew Shirt",
+      alt: "Final Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
     {
       img: "/img/eyf/kaos-eyf-6.webp",
-      alt: "Staff Event Crew Shirt",
+      alt: "Event Crew Shirt",
       height: "250px",
       width: "400px"
     },
@@ -239,6 +240,7 @@ export default function EyfPage() {
           >
 
             {item.map((item, index) => (
+              <ScrollFadeIn delay={100 * index}>
                   <div
                     key={index}
                     className="break-inside-avoid items-center justify-center whitespace-nowrap [grid-row-end:span_var(--row-span)]"
@@ -262,6 +264,7 @@ export default function EyfPage() {
                       bottomRightText={item.alt}
                     />
                   </div>
+              </ScrollFadeIn>
                 )
               )
             }
