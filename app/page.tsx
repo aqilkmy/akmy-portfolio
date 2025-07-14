@@ -21,6 +21,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "./components/ui/breadcrumb"
+import SkillBar from './components/SkillBar';
 
 
 
@@ -197,7 +198,7 @@ export default function Home() {
         </header>
 
 
-        <div className="relative justify-center mx-auto mt-44 max-w-7xl z-10 pt-20">
+        <div className="relative justify-center mx-auto mt-44 max-w-100vdh z-10 pt-20">
           <div className="flex justify-between items-center px-20">
             <div className="flex flex-col justify-center">
               <div>
@@ -264,17 +265,30 @@ export default function Home() {
         <section id='about' className='scroll-m-24 relative z-10'>
           <div className="mt-40 ">
             <div className={`font-semibold text-xl text-center drop-shadow-[0_0_40px_#38bdf8] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              About
+              About Me
             </div>
 
             <div className={`text-center bg-slate-400 w-5 h-[3px] rounded-full my-2 mx-auto transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}></div>
 
-            <div className="mt-20 mx-auto max-w-5xl grid gap-y-6">
-              <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-4xl py-4'>
-                I’m Muhammad Aqil Karomy, a passionate graphic designer with over 4 years of experience in the creative industry. I specialize in 2D design for both digital and print media, including posters, social media content, apparel graphics, and branding materials. My journey began in high school through organizational work and has grown into a deep commitment to delivering clear, impactful, and meaningful visuals.
-              </div>
-              <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-4xl py-4 ml-auto'>
-                Currently, I’m also pursuing a degree in Informatics at Jenderal Soedirman University, where I continue to sharpen both my creative and technical skills. I enjoy turning ideas into visual stories and helping individuals, brands, and communities communicate their identity through design.
+            <div className="mt-20 mx-auto max-w-100vdh ">
+              <div className='mx-20 flex gap-4'>
+                <div className='w-3/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
+                  <div className='text-xl font-semibold text-neutral-200 mb-6'>
+                    Introduce
+                  </div>
+                  <div>
+                    I’m Muhammad Aqil Karomy, a passionate graphic designer with over 4 years of experience in the creative industry. I specialize in 2D design for both digital and print media, including posters, social media content, apparel graphics, and branding materials. My journey began in high school through organizational work and has grown into a deep commitment to delivering clear, impactful, and meaningful visuals. <br /> <br />
+                    Currently, I’m also pursuing a degree in Informatics at Jenderal Soedirman University, where I continue to sharpen both my creative and technical skills. I enjoy turning ideas into visual stories and helping individuals, brands, and communities communicate their identity through design.
+                  </div>
+                </div>
+                <div className='w-2/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4'>
+                  <h2 className="text-xl font-semibold text-neutral-200 mb-6">Skills</h2>
+                  <SkillBar label="Adobe Photoshop" percent={80} />
+                  <SkillBar label="Adobe Illustrator" percent={70} />
+                  <SkillBar label="Figma" percent={45} />
+                  <SkillBar label="Canva" percent={70} />
+                  <SkillBar label="HTML CSS & Tailwind" percent={60} />
+                </div>
               </div>
             </div>
           </div>
@@ -286,14 +300,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* <div className='overflow-x-visible'>
+        <div className='overflow-x-visible'>
           <Crosshair 
           containerRef={containerRef} 
           color="#616364" 
           visible={true} 
           />
-        </div>                   */}
+        </div>                  
 
+        <div className="relative z-10 text-xs m-5">
+            © 2025 Designed By AqilKmy
+        </div>
       </div>
     </div>
   );
