@@ -140,14 +140,15 @@ export default function EyfPage() {
     <div ref={containerRef} className="text-neutral-200 overflow-x-hidden">
       <div id="home" className="relative min-h-screen overflow-x-hidden">
         {/* Background Layers */}
-        <div className="absolute inset-0 z-0">
-          <Aurora
-            colorStops={["#8CC6DD", "#384252", "#8CC6DD"]}
-            blend={1}
-            amplitude={1.5}
-            speed={1}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Aurora 
+          colorStops={["#60BADE", "#293A55", "#60BADE"]} 
+          blend={1} 
+          amplitude={1.5} 
+          speed={1} 
           />
         </div>
+
         <div className="overflow-x-hidden fixed inset-0 z-0">
           <CurvedLoop 
                 marqueeText="Engineering ✦ Youth ✦ Festival ✦"
@@ -158,15 +159,16 @@ export default function EyfPage() {
                 className=""
               />
         </div>
-        <div className="absolute inset-0 z-0">
-          <Squares
-            speed={0.5}
-            squareSize={30}
-            direction="diagonal"
-            borderColor="#616364"
-            hoverFillColor="#eee"
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <Squares 
+          speed={0.5} 
+          squareSize={30} 
+          direction='diagonal' 
+          borderColor='#dddddd33' 
+          hoverFillColor='#eee' 
           />
         </div>
+        
 
         {/* Foreground Content */}
         <div className="relative z-10 p-10 text-neutral-200 text-justify mx-auto grid justify-center">

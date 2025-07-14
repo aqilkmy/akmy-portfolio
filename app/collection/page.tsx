@@ -141,7 +141,7 @@ export default function Home() {
       <div id='home' className="relative min-h-screen overflow-x-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Aurora 
-          colorStops={["#8CC6DD", "#384252", "#8CC6DD"]} 
+          colorStops={["#60BADE", "#293A55", "#60BADE"]} 
           blend={1} 
           amplitude={1.5} 
           speed={1} 
@@ -153,7 +153,7 @@ export default function Home() {
           speed={0.5} 
           squareSize={30} 
           direction='diagonal' 
-          borderColor='#616364' 
+          borderColor='#dddddd33' 
           hoverFillColor='#eee' 
           />
         </div>
