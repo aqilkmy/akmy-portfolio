@@ -81,10 +81,10 @@ export default function Home() {
         )}>
           <nav className="text-neutral-200 rounded-full relative z-10 ">
             <div className={clsx(
-              'mx-auto flex items-center px-6 transition-all duration-300 rounded-full',
+              'mx-auto flex items-center lg:px-6 transition-all duration-300 rounded-full',
               scrolled
-                ? 'max-w-6xl py-4 justify-between lg:justify-center border-transparent lg:bg-white/5 lg:backdrop-blur-xs lg:border lg:border-white/30 hover:drop-shadow-[0_0_40px_#38bdf8] lg:transition-all lg:duration-500'
-                : 'max-w-7xl py-4 justify-between bg-white/5 backdrop-blur-xs border border-white/30 hover:drop-shadow-[0_0_40px_#38bdf8] lg:transition-all lg:duration-500'
+                ? 'max-w-6xl py-4 px-2 justify-between lg:justify-center border-transparent lg:bg-white/5 lg:backdrop-blur-xs lg:border lg:border-white/30 hover:drop-shadow-[0_0_40px_#38bdf8] lg:transition-all lg:duration-500'
+                : 'max-w-7xl py-4 px-6 justify-between bg-white/5 backdrop-blur-xs border border-white/30 hover:drop-shadow-[0_0_40px_#38bdf8] lg:transition-all lg:duration-500'
             )}>
 
               {/* Logo Wrapper */}
@@ -99,7 +99,7 @@ export default function Home() {
 
 
               {/* Hamburger icon (mobile only) */}
-              <div className="md:hidden">
+              <div className="md:hidden ">
                 <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                     {isOpen ? (
@@ -125,7 +125,9 @@ export default function Home() {
 
             {/* Menu (mobile dropdown) */}
             {isOpen && (
-              <div className="md:hidden relative mt-4  flex justify-end">
+              <div className={clsx("md:hidden relative flex justify-end",
+                scrolled ? "mt-0" : "mt-4"
+              )}>
                 <div className='w-3/5 px-6 pb-4 pt-2 bg-slate-900/70 backdrop-blur-xs border border-white/20 rounded-xl'>
                   <ul className="flex flex-col gap-4 font-semibold text-sm text-neutral-300  text-end">
                     <li><button onClick={() => { handleScrollTo("#home"); setIsOpen(false); }} className="hover:text-white transition">Home</button></li>
@@ -201,7 +203,7 @@ export default function Home() {
           </ScrollFadeIn>
 
           <ScrollFadeIn delay={700}>
-            <section id='collection' className='scroll-m-24 relative z-10 my-24'>
+            <section id='collection' className='scroll-m-24 relative z-10 my-24  overflow-x-visible'>
               <div className="font-semibold text-xl text-center drop-shadow-[0_0_40px_#38bdf8] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}">Collection</div>
               <div className="text-center bg-slate-400 w-5 h-[3px] rounded-full my-2 mx-auto transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}"></div>
               <div className='w-full h-[200px] lg:h-[600px] relative'>
@@ -217,7 +219,7 @@ export default function Home() {
           </ScrollFadeIn>
         </div>
 
-        <footer className="text-center text-xs font-light py-4 z-10 bg-transparent relative z-10">
+        <footer className="text-center text-xs font-light py-4 z-10 bg-transparent relative">
           © 2025 Designed By AqilKmy
         </footer>
       </div>
