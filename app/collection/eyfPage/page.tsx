@@ -171,106 +171,109 @@ export default function EyfPage() {
         
 
         {/* Foreground Content */}
-        <div className="relative z-10 p-10 text-neutral-200 text-justify mx-auto grid justify-center">
-          <div className="flex justify-center max-w-7xl">
-            <div className="gap-y-3 grid">
-              <div className="flex gap-5">
-                {/* Back Button */}
-                <div>
-                  <Link
-                    href="/collection"
-                    className=" relative inline-block text-neutral-200 rounded-full z-10 bg-white/5 backdrop-blur-xs border border-white/30 px-4 py-1 my-4 hover:bg-white/40 hover:drop-shadow-[0_0_40px_#38bdf8] transition-colors duration-300"
+        <div className="relative z-10 mt-10 text-neutral-200 text-justify lg:grid justify-center lg:mx-auto mx-4">
+          <div className="">
+            <div className="flex justify-center max-w-7xl">
+              <div className="gap-y-3 grid">
+                <div className="flex gap-5">
+                  {/* Back Button */}
+                  <div>
+                    <Link
+                      href="/collection"
+                      className=" relative inline-block text-neutral-200 rounded-full z-10 bg-white/5 backdrop-blur-xs border border-white/30 px-4 py-1 my-4 hover:bg-white/40 hover:drop-shadow-[0_0_40px_#38bdf8] transition-colors duration-300"
+                    >
+                      Back
+                    </Link>
+                  </div>
+
+                  <div className="my-6">
+                    <Breadcrumb>
+                      <BreadcrumbList>
+                        <BreadcrumbItem>
+                          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                          <BreadcrumbLink href="/collection">Collection</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator />
+                        <BreadcrumbItem>
+                          <BreadcrumbPage>Eyf</BreadcrumbPage>
+                        </BreadcrumbItem>
+                      </BreadcrumbList>
+                    </Breadcrumb>
+                  </div>
+                </div>
+
+                {/* Text Content */}
+                <div className="relative text-center grid gap-y-4 mx-auto max-w-7xl w-full">
+                  <BlurText
+                    text="Engineering Youth Festival"
+                    delay={150}
+                    animateBy="words"
+                    direction="top"
+                    className="text-4xl font-bold drop-shadow-[0_0_40px_#38bdf8] text-center"
+                  />
+                  <p className="italic font-semibold text-neutral-300">
+                    Role: Graphic Designer & Photographer
+                  </p>
+
+                  <ScrollReveal
+                    baseOpacity={0}
+                    enableBlur={true}
+                    baseRotation={5}
+                    blurStrength={10}
+                    textClassName="text-justify font-light mt-6"
                   >
-                    Back
-                  </Link>
+                    Contributed as a graphic designer and event photographer for the Engineering Youth
+                    Festival, an event showcasing creativity and innovation among engineering students.
+                    Responsibilities included creating visual materials and capturing event documentation
+                    for publication and official archives.
+                  </ScrollReveal>
+
+                  
                 </div>
-
-                <div className="my-6">
-                  <Breadcrumb>
-                    <BreadcrumbList>
-                      <BreadcrumbItem>
-                        <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator />
-                      <BreadcrumbItem>
-                        <BreadcrumbLink href="/collection">Collection</BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator />
-                      <BreadcrumbItem>
-                        <BreadcrumbPage>Eyf</BreadcrumbPage>
-                      </BreadcrumbItem>
-                    </BreadcrumbList>
-                  </Breadcrumb>
-                </div>
-              </div>
-
-              {/* Text Content */}
-              <div className="relative text-center grid gap-y-4 mx-auto max-w-7xl w-full">
-                <BlurText
-                  text="Engineering Youth Festival"
-                  delay={150}
-                  animateBy="words"
-                  direction="top"
-                  className="text-4xl font-bold drop-shadow-[0_0_40px_#38bdf8] text-center"
-                />
-                <p className="italic font-semibold text-neutral-300">
-                  Role: Graphic Designer & Photographer
-                </p>
-
-                <ScrollReveal
-                  baseOpacity={0}
-                  enableBlur={true}
-                  baseRotation={5}
-                  blurStrength={10}
-                  textClassName="text-justify font-light my-6"
-                >
-                  Contributed as a graphic designer and event photographer for the Engineering Youth
-                  Festival, an event showcasing creativity and innovation among engineering students.
-                  Responsibilities included creating visual materials and capturing event documentation
-                  for publication and official archives.
-                </ScrollReveal>
-
-                
               </div>
             </div>
+            <div className="justify-center grid lg:justify-between mx-auto">
+              <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="flex w-full gap-6 lg:scale-100 scale-90"
+                columnClassName="space-y-6"
+              >
+
+                {item.map((item, index) => (
+                  <ScrollFadeIn key={index} delay={100 * index}>
+                      <div
+                        key={index}
+                        className="break-inside-avoid items-center justify-center whitespace-nowrap [grid-row-end:span_var(--row-span)]"
+                        style={{
+                          gridRowEnd: `span ${Math.ceil(parseInt(item.height) / 10)}`
+                        }}
+                      >
+                        <TiltedCard
+                          imageSrc={item.img}
+                          altText={item.alt}
+                          captionText= {item.alt}
+                          containerHeight={item.height}
+                          containerWidth={item.width}
+                          imageHeight={item.height}
+                          imageWidth={item.width}
+                          rotateAmplitude={12}
+                          scaleOnHover={1.1}
+                          showMobileWarning={false}
+                          showTooltip={true}
+                          displayOverlayContent={true}
+                          bottomRightText={item.alt}
+                        />
+                      </div>
+                  </ScrollFadeIn>
+                    )
+                  )
+                }
+              </Masonry>
+            </div>
           </div>
-
-          <Masonry
-            breakpointCols={breakpointColumnsObj}
-            className="flex w-full gap-6"
-            columnClassName="space-y-6"
-          >
-
-            {item.map((item, index) => (
-              <ScrollFadeIn key={index} delay={100 * index}>
-                  <div
-                    key={index}
-                    className="break-inside-avoid items-center justify-center whitespace-nowrap [grid-row-end:span_var(--row-span)]"
-                    style={{
-                      gridRowEnd: `span ${Math.ceil(parseInt(item.height) / 10)}`
-                    }}
-                  >
-                    <TiltedCard
-                      imageSrc={item.img}
-                      altText={item.alt}
-                      captionText= {item.alt}
-                      containerHeight={item.height}
-                      containerWidth={item.width}
-                      imageHeight={item.height}
-                      imageWidth={item.width}
-                      rotateAmplitude={12}
-                      scaleOnHover={1.1}
-                      showMobileWarning={false}
-                      showTooltip={true}
-                      displayOverlayContent={true}
-                      bottomRightText={item.alt}
-                    />
-                  </div>
-              </ScrollFadeIn>
-                )
-              )
-            }
-          </Masonry>
 
         </div>
         <div className="text-center relative z-10 text-xs m-5 font-light">
