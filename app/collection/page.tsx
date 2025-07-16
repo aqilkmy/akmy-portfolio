@@ -160,6 +160,7 @@ export default function Home() {
 
         <section id='porto' className='scroll-m-24 relative z-10 my-10'>
           <div className='max-w-7xl mx-auto'>
+            <div className='flex gap-5'>
               <div className='mb-4'>
                 <Link
                   href="/"
@@ -183,6 +184,7 @@ export default function Home() {
                   </BreadcrumbList>
                 </Breadcrumb>
               </div>
+            </div>
           </div>          
           <div className='max-w-6xl mx-auto grid overflow-y-visible  '>
 
@@ -302,6 +304,9 @@ export default function Home() {
           visible={true} 
           />
         </div>                   */}
+        <div className="text-center relative z-10 text-xs m-5 font-light">
+            © 2025 Designed By AqilKmy
+        </div>
 
       </div>
     </div>

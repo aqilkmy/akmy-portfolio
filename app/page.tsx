@@ -142,9 +142,7 @@ export default function Home() {
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => handleScrollTo("#contact")} className="hover:text-white transition">
-                    Contact
-                  </button>
+                  <Link href={'/contact'} className="hover:text-white transition">Contact</Link>
                 </li>
 
               </ul>
@@ -154,7 +152,7 @@ export default function Home() {
 
 
         <div className="relative justify-center mx-auto mt-44 max-w-100vdh z-10 pt-20">
-          <div className="flex justify-between items-center px-20">
+          <div className="flex justify-between items-center px-20 max-w-7xl mx-auto">
             <div className="flex flex-col justify-center">
               <div>
                 <BlurText
@@ -239,11 +237,12 @@ export default function Home() {
                   </div>
                   <div className='w-2/5 px-8 text-justify bg-white/5 backdrop-blur-xs border border-white/20 rounded-xl py-4 hover:drop-shadow-[0_0_40px_#38bdf8] transition-all duration-500'>
                     <h2 className="text-xl font-semibold text-neutral-200 mb-6">Skills</h2>
-                    <SkillBar label="Adobe Photoshop" percent={80} />
+                    <SkillBar label="Adobe Photoshop" percent={85} />
                     <SkillBar label="Adobe Illustrator" percent={70} />
-                    <SkillBar label="Figma" percent={45} />
+                    <SkillBar label="Figma" percent={55} />
                     <SkillBar label="Canva" percent={70} />
                     <SkillBar label="HTML CSS & Tailwind" percent={60} />
+                    <SkillBar label="Javascript & React.js" percent={30} />
                   </div>
                 </div>
               </div>

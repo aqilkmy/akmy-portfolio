@@ -37,7 +37,7 @@ const Crosshair = dynamic(() => import("../../components/Crosshair/Crosshair"), 
   loading: () => null,
 });
 
-export default function EyfPage() {
+export default function gimjamPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -151,7 +151,7 @@ export default function EyfPage() {
 
         <div className="overflow-x-hidden fixed inset-0 z-0">
           <CurvedLoop 
-                marqueeText="Engineering ✦ Youth ✦ Festival ✦"
+                marqueeText="GimJam ✦ ITB ✦ 2025 ✦"
                 speed={3}
                 curveAmount={500}
                 direction="right"
@@ -197,7 +197,7 @@ export default function EyfPage() {
                       </BreadcrumbItem>
                       <BreadcrumbSeparator />
                       <BreadcrumbItem>
-                        <BreadcrumbPage>Eyf</BreadcrumbPage>
+                        <BreadcrumbPage>GimJam 2025</BreadcrumbPage>
                       </BreadcrumbItem>
                     </BreadcrumbList>
                   </Breadcrumb>
@@ -207,14 +207,14 @@ export default function EyfPage() {
               {/* Text Content */}
               <div className="relative text-center grid gap-y-4 mx-auto max-w-7xl w-full">
                 <BlurText
-                  text="Engineering Youth Festival"
+                  text="GimJam ITB 2025"
                   delay={150}
                   animateBy="words"
                   direction="top"
                   className="text-4xl font-bold drop-shadow-[0_0_40px_#38bdf8] text-center"
                 />
                 <p className="italic font-semibold text-neutral-300">
-                  Role: Graphic Designer & Photographer
+                  Role: 2D Game Artist
                 </p>
 
                 <ScrollReveal
